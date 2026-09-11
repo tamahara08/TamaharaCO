@@ -1,192 +1,434 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TamaHara | Ujihara Jade Ann - Artist & Craftsperson</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Syne for chunky art titles & Plus Jakarta Sans for body -->
+    <title>TamaHara.Co | Jade Ujihara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        heading: ['Syne', 'sans-serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        whimsy: {
-                            cream: '#FBF9F1',
-                            pink: '#F4B6C2',
-                            deepgreen: '#2D4A3E',
-                            sage: '#8EA89D',
-                            orange: '#E76F51',
-                            yellow: '#F4A261'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,400..700;1,400..700&family=Special+Elite&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .wavy-border {
+        :root {
+            --bg-color: #fdfbf7;
+            --text-color: #1a1a1a;
+            --accent-yellow: #ffeb3b;
+            --accent-pink: #ff4081;
+            --accent-blue: #00bcd4;
+            --accent-green: #8bc34a;
+            --border-color: #1a1a1a;
+            --sketch-shadow: 4px 4px 0px #1a1a1a;
+            --sketch-shadow-sm: 2px 2px 0px #1a1a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Handwritten font utility */
+        .handwritten {
+            font-family: 'Shantell Sans', cursive, sans-serif;
+        }
+
+        .typewriter {
+            font-family: 'Special Elite', monospace;
+        }
+
+        /* Sketchy Box Styling */
+        .sketch-box {
+            background: #fff;
+            border: 3px solid var(--border-color);
+            box-shadow: var(--sketch-shadow);
+            padding: 30px;
+            margin-bottom: 40px;
             border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            position: relative;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--accent-yellow);
+            text-align: center;
+            padding: 50px 20px;
+            transform: rotate(-1deg);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .hero-intro {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            box-shadow: var(--sketch-shadow-sm);
+            transform: rotate(1deg);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background-color: #fff;
+            transform: rotate(0.5deg);
+        }
+
+        .section-title {
+            display: inline-block;
+            background: var(--accent-blue);
+            padding: 5px 15px;
+            border: 2px solid var(--border-color);
+            box-shadow: var(--sketch-shadow-sm);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            transform: rotate(-2deg);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+
+        .signature {
+            font-size: 1.3rem;
+            text-align: right;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background: #fff;
+            border: 3px solid var(--border-color);
+            box-shadow: var(--sketch-shadow);
+            padding: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-item:nth-child(odd) {
+            transform: rotate(1.5deg);
+            background-color: #fff9c4;
+        }
+
+        .gallery-item:nth-child(even) {
+            transform: rotate(-1.5deg);
+            background-color: #e1f5fe;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02) rotate(0deg);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 220px;
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .gallery-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-item p {
+            font-size: 0.95rem;
+        }
+
+        /* --- FIND & CONNECT SECTION --- */
+        .connect {
+            background-color: #fff0f5;
+            transform: rotate(-0.5deg);
+        }
+
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .connect-card {
+            background: #fff;
+            border: 2px solid var(--border-color);
+            box-shadow: var(--sketch-shadow-sm);
+            padding: 20px;
+        }
+
+        .connect-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .connect-card ul {
+            list-style: none;
+        }
+
+        .connect-card li {
+            margin-bottom: 8px;
+        }
+
+        .connect-card a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            background: var(--accent-yellow);
+            padding: 2px 6px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .connect-card a:hover {
+            background: var(--accent-pink);
+            color: #fff;
+        }
+
+        /* Newsletter Box */
+        .newsletter-box {
+            margin-top: 25px;
+            background: #fff;
+            border: 2px solid var(--border-color);
+            padding: 20px;
+            box-shadow: var(--sketch-shadow-sm);
+        }
+
+        .newsletter-box h4 {
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .sketch-btn {
+            background: var(--accent-pink);
+            color: #fff;
+            border: 2px solid var(--border-color);
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: var(--sketch-shadow-sm);
+            font-family: 'Shantell Sans', cursive, sans-serif;
+        }
+
+        .sketch-btn:active {
+            box-shadow: none;
+            transform: translate(2px, 2px);
+        }
+
+        /* --- JUNK DRAWER / JOURNAL SECTION --- */
+        .journal {
+            background-color: #e8f5e9;
+            transform: rotate(1deg);
+        }
+
+        .journal-entry {
+            background: #fff;
+            border: 2px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--sketch-shadow-sm);
+            position: relative;
+        }
+
+        .journal-date {
+            font-size: 0.85rem;
+            background: var(--accent-yellow);
+            padding: 2px 8px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .journal-entry h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            font-family: 'Special Elite', monospace;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .sketch-box {
+                padding: 20px;
+            }
         }
     </style>
 </head>
-<body class="bg-whimsy-cream text-whimsy-deepgreen font-sans antialiased selection:bg-whimsy-pink selection:text-whimsy-deepgreen">
+<body>
 
-    <!-- Floating Whimsical Nav -->
-    <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50 bg-whimsy-cream/90 backdrop-blur-md border-2 border-whimsy-deepgreen py-3 px-6 rounded-full shadow-[4px_4px_0px_0px_#2D4A3E] transition-all duration-300 flex items-center justify-between">
-        <a href="#home" class="font-heading text-xl font-bold tracking-tight hover:text-whimsy-orange transition-colors">
-            TamaHara ✨
-        </a>
-        <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wider">
-            <a href="#about" class="hover:text-whimsy-orange transition-colors">About</a>
-            <a href="#portfolio" class="hover:text-whimsy-orange transition-colors">Portfolio</a>
-            <a href="#contact" class="hover:text-whimsy-orange transition-colors">Contact</a>
-        </div>
-        <a href="https://minne.com" target="_blank" class="px-4 py-2 text-xs uppercase font-bold tracking-widest bg-whimsy-pink text-whimsy-deepgreen border-2 border-whimsy-deepgreen rounded-full shadow-[2px_2px_0px_0px_#2D4A3E] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all">
-            Minne Shop 🛍️
-        </a>
-    </nav>
+    <div class="container">
 
-    <!-- Hero Section -->
-    <header id="home" class="min-h-screen bg-whimsy-sage/30 flex items-center justify-center text-center px-6 pt-32 pb-16 relative overflow-hidden border-b-4 border-whimsy-deepgreen">
-        <div class="max-w-4xl mx-auto space-y-6">
-            <div class="inline-block bg-whimsy-pink border-2 border-whimsy-deepgreen px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-[3px_3px_0px_0px_#2D4A3E] rotate-[-2deg]">
-                🎨 Artist & Jewelry Craftsperson
+        <!-- HERO SECTION -->
+        <header class="sketch-box hero">
+            <h1 class="handwritten">TamaHara.Co</h1>
+            <div class="subtitle typewriter">Jade Ujihara — Artist & Jewelry Craftsperson</div>
+            <div class="hero-intro handwritten">
+                "Channeling a hyper-color mindset into brick-stitch jewelry, tactile wool sculptures, with the occasional painting or illustration thrown into the mix."
             </div>
-            <h1 class="font-heading text-5xl md:text-7xl font-extrabold tracking-tight leading-none">
-                Is an artist & designer based in <span class="text-whimsy-orange underline decoration-wavy decoration-2">Kanagawa</span>.
-            </h1>
-            <p class="text-whimsy-deepgreen/80 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-                She crafts delicate seed bead jewelry, textured needle felting, and mixed-media art inspired by nature and vibrant expression.
-            </p>
-            <div class="pt-4 flex justify-center gap-4">
-                <a href="#portfolio" class="px-8 py-4 bg-whimsy-deepgreen text-whimsy-cream text-sm font-bold uppercase tracking-widest rounded-2xl border-2 border-whimsy-deepgreen shadow-[4px_4px_0px_0px_#E76F51] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-                    Explore Work 🌻
-                </a>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <h2 class="font-heading text-4xl md:text-5xl font-bold">A Little About Me 🌿</h2>
-            <p class="text-whimsy-deepgreen/80 text-base md:text-lg leading-relaxed">
-                Originally from Florida’s Forgotten Coast and now creating along the quiet shores of Kanagawa, Japan. My art reflects a colorful mind across multiple tactile mediums.
-            </p>
-        </div>
+        <!-- ABOUT SECTION -->
+        <section class="sketch-box about">
+            <h2 class="section-title handwritten">About the artist</h2>
+            <div class="about-text handwritten">
+I am originally from the forgotten coast in the Florida Panhandle. I grew up always loving art and creating things with my hands, dreaming of one day having my own business. I remember doing photoshoots on my mom’s iPad, staging whatever I had made, or staying awake at absurd hours of the night trying to hand-sew long tulle and lace to my jeans so I could show my friends at school the next day, hoping they’d let me customize their clothes. 
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-whimsy-pink/40 p-8 rounded-3xl border-3 border-whimsy-deepgreen shadow-[6px_6px_0px_0px_#2D4A3E] transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#2D4A3E]">
-                <div class="text-3xl mb-4">📿</div>
-                <h3 class="font-heading text-2xl font-bold mb-3">Intricate Beadwork</h3>
-                <p class="text-sm font-medium leading-relaxed">
-                    Using traditional brick stitch and fine Miyuki beads to construct lightweight, striking geometric fringe earrings and wearable art.
-                </p>
-            </div>
-            <div class="bg-whimsy-yellow/30 p-8 rounded-3xl border-3 border-whimsy-deepgreen shadow-[6px_6px_0px_0px_#2D4A3E] transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#2D4A3E]">
-                <div class="text-3xl mb-4">🧶</div>
-                <h3 class="font-heading text-2xl font-bold mb-3">Needle Felting</h3>
-                <p class="text-sm font-medium leading-relaxed">
-                    Sculpting soft wool fibers into organic nature motifs—ginkgo leaves, birds, and floral accents for hats, ties, and brooches.
-                </p>
-            </div>
-            <div class="bg-whimsy-sage/40 p-8 rounded-3xl border-3 border-whimsy-deepgreen shadow-[6px_6px_0px_0px_#2D4A3E] transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#2D4A3E]">
-                <div class="text-3xl mb-4">🎨</div>
-                <h3 class="font-heading text-2xl font-bold mb-3">Mixed Media Art</h3>
-                <p class="text-sm font-medium leading-relaxed">
-                    Capturing spontaneous perspectives through analog photography, rich oil pastels, and fluid watercolor paintings.
-                </p>
-            </div>
-        </div>
-    </section>
+Over time and across different mediums, I’ve found the most joy in working with seed beads using brick-stitch techniques, along with recent explorations in needle felting—always returning to where the love started: painting and illustrating. Since I’m still in my 20s, I’m still finding who I truly am as an artist and which stones figuratively I want to build my house out of... which at this rate will probably be a house of many colors and patterns, just like an American quilt. 
 
-    <!-- Portfolio Gallery Section -->
-    <section id="portfolio" class="py-24 bg-whimsy-orange/20 border-y-4 border-whimsy-deepgreen px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold">Selected Projects 🎨</h2>
+Now that I’ve moved to Japan, I look forward to what this chapter will create. I just know I’ll be happy to have your support along the way, because you can be certain I will share my art with you.
             </div>
+            <div class="signature handwritten">— Yours truly, Jade</div>
+        </section>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Portfolio Item 1 -->
-                <div class="group relative overflow-hidden bg-whimsy-cream aspect-square rounded-2xl border-3 border-whimsy-deepgreen shadow-[4px_4px_0px_0px_#2D4A3E] cursor-pointer">
-                    <img src="https://picsum.photos/400/400?random=1" alt="Beadwork" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-whimsy-deepgreen/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-whimsy-cream font-bold text-xs uppercase tracking-widest border-2 border-whimsy-cream px-4 py-2 rounded-xl">View Piece</span>
-                    </div>
+        <!-- PORTFOLIO / GALLERY SECTION -->
+        <section class="sketch-box">
+            <h2 class="section-title handwritten">The chaotic craft collection</h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <div class="image-placeholder typewriter">[ Image: Beaded Fringe Earrings ]</div>
+                    <h3 class="handwritten">Brick-Stitch Beaded Fringe</h3>
+                    <p class="handwritten">Close-up macro shots of hyper-detailed Miyuki seed bead color gradients and custom drops.</p>
                 </div>
-                <!-- Portfolio Item 2 -->
-                <div class="group relative overflow-hidden bg-whimsy-cream aspect-square rounded-2xl border-3 border-whimsy-deepgreen shadow-[4px_4px_0px_0px_#2D4A3E] cursor-pointer">
-                    <img src="https://picsum.photos/400/400?random=2" alt="Felting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-whimsy-deepgreen/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-whimsy-cream font-bold text-xs uppercase tracking-widest border-2 border-whimsy-cream px-4 py-2 rounded-xl">View Piece</span>
-                    </div>
+
+                <div class="gallery-item">
+                    <div class="image-placeholder typewriter">[ Image: Felted Wearables ]</div>
+                    <h3 class="handwritten">Needle-Felted Goods</h3>
+                    <p class="handwritten">Hats, brooches, and ties embedded with natural motifs like ginkgo leaves and birds.</p>
                 </div>
-                <!-- Portfolio Item 3 -->
-                <div class="group relative overflow-hidden bg-whimsy-cream aspect-square rounded-2xl border-3 border-whimsy-deepgreen shadow-[4px_4px_0px_0px_#2D4A3E] cursor-pointer">
-                    <img src="https://picsum.photos/400/400?random=3" alt="Art" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-whimsy-deepgreen/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-whimsy-cream font-bold text-xs uppercase tracking-widest border-2 border-whimsy-cream px-4 py-2 rounded-xl">View Piece</span>
-                    </div>
+
+                <div class="gallery-item">
+                    <div class="image-placeholder typewriter">[ Image: Sketches & Paintings ]</div>
+                    <h3 class="handwritten">Sketches & Color Work</h3>
+                    <p class="handwritten">Raw snapshots of oil pastels, watercolors, and sketchbook design pages.</p>
                 </div>
-                <!-- Portfolio Item 4 -->
-                <div class="group relative overflow-hidden bg-whimsy-cream aspect-square rounded-2xl border-3 border-whimsy-deepgreen shadow-[4px_4px_0px_0px_#2D4A3E] cursor-pointer">
-                    <img src="https://picsum.photos/400/400?random=4" alt="Accessories" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-whimsy-deepgreen/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-whimsy-cream font-bold text-xs uppercase tracking-widest border-2 border-whimsy-cream px-4 py-2 rounded-xl">View Piece</span>
-                    </div>
+
+            </div>
+        </section>
+
+        <!-- FIND & CONNECT SECTION -->
+        <section class="sketch-box connect">
+            <h2 class="section-title handwritten">Where to find the mess</h2>
+            
+            <div class="connect-grid">
+                <div class="connect-card">
+                    <h4 class="handwritten">Shop the Goods</h4>
+                    <ul>
+                        <li><a href="#" target="_blank">Etsy Shop</a> — Custom fringe earrings & hats</li>
+                        <li><a href="#" target="_blank">Minne (ミンネ)</a> — Curated local handmade pieces</li>
+                        <li><a href="#" target="_blank">Creema (クリーマ)</a> — Unique textile & bead drops</li>
+                    </ul>
+                </div>
+
+                <div class="connect-card">
+                    <h4 class="handwritten">Direct Lines</h4>
+                    <ul>
+                        <li><a href="#" target="_blank">Instagram</a> — Daily studio chaos & WIPs</li>
+                        <li><a href="#" target="_blank">LINE</a> — Direct updates & friendly chats</li>
+                        <li><a href="mailto:your-email@example.com">Email</a> — Custom work & collabs</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="https://minne.com" target="_blank" class="inline-block px-8 py-4 bg-whimsy-pink text-whimsy-deepgreen font-bold text-xs uppercase tracking-widest rounded-2xl border-3 border-whimsy-deepgreen shadow-[4px_4px_0px_0px_#2D4A3E] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-                    Visit Minne Store 🛍️
-                </a>
+            <!-- Newsletter Box -->
+            <div class="newsletter-box">
+                <h4 class="handwritten">Join the Inner Circle</h4>
+                <p class="handwritten" style="font-size: 0.95rem;">Get a front-row seat to new collections, studio thoughts, and updates straight to your inbox.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for joining the inner circle!');">
+                    <input type="email" placeholder="your.email@domain.com" required>
+                    <button type="submit" class="sketch-btn">Sign me up!</button>
+                </form>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 max-w-4xl mx-auto text-center">
-        <h2 class="font-heading text-4xl md:text-5xl font-bold mb-4">Let's Connect! 💌</h2>
-        <p class="text-whimsy-deepgreen/80 text-base mb-12 font-medium">Have a custom jewelry inquiry or want to collaborate? Drop a line below.</p>
-        
-        <div class="grid md:grid-cols-2 gap-12 text-left bg-white p-8 md:p-12 rounded-3xl border-3 border-whimsy-deepgreen shadow-[8px_8px_0px_0px_#2D4A3E]">
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xs uppercase tracking-widest font-bold text-whimsy-deepgreen/60 mb-1">Location</h3>
-                    <p class="font-heading text-xl font-bold">Ebina, Kanagawa, Japan 🌸</p>
-                </div>
-                <div>
-                    <h3 class="text-xs uppercase tracking-widest font-bold text-whimsy-deepgreen/60 mb-1">Email</h3>
-                    <p class="font-heading text-xl font-bold">contact@tamahara.com</p>
-                </div>
+        <!-- THE JUNK DRAWER SECTION -->
+        <section class="sketch-box journal">
+            <h2 class="section-title handwritten">The Junk Drawer</h2>
+            <p class="handwritten" style="margin-bottom: 20px;">A running log of day-to-day studio notes, half-baked ideas, and project updates.</p>
+
+            <div class="journal-entry">
+                <span class="journal-date typewriter">September 2026</span>
+                <h3 class="handwritten">New color palettes & Kanagawa air</h3>
+                <p class="handwritten">Experimenting with new Miyuki bead combinations inspired by the shifting autumn foliage around Kanagawa. Balancing a bunch of tiny glass beads with some fresh needle-felting work—stay tuned for the next batch!</p>
             </div>
-            <form class="space-y-4" onsubmit="event.preventDefault();">
-                <input type="text" placeholder="Your Name" class="w-full p-3 bg-whimsy-cream border-2 border-whimsy-deepgreen rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-whimsy-orange">
-                <input type="email" placeholder="Your Email" class="w-full p-3 bg-whimsy-cream border-2 border-whimsy-deepgreen rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-whimsy-orange">
-                <textarea placeholder="Your Message" rows="4" class="w-full p-3 bg-whimsy-cream border-2 border-whimsy-deepgreen rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-whimsy-orange"></textarea>
-                <button type="submit" class="w-full py-3 bg-whimsy-deepgreen text-whimsy-cream font-bold text-xs uppercase tracking-widest rounded-xl border-2 border-whimsy-deepgreen shadow-[4px_4px_0px_0px_#E76F51] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">Send Message ✨</button>
-            </form>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-8 bg-whimsy-deepgreen text-whimsy-cream text-center text-xs tracking-widest uppercase font-bold">
-        <p>&copy; 2026 TamaHara by Ujihara Jade Ann. All Rights Reserved. 🌿</p>
-    </footer>
+            <div class="journal-entry">
+                <span class="journal-date typewriter">Studio Note</span>
+                <h3 class="handwritten">On building a house of many colors</h3>
+                <p class="handwritten">Sometimes a pattern doesn't work out the first three times, and that's totally fine. Ripped out an entire row of brick-stitch today because the tension was off. Back to the drawing board (literally).</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 TamaHara.Co (Jade Ujihara). Built with chaotic good energy.</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
