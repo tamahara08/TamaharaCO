@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +39,10 @@
             border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
             box-shadow: 3px 3px 0px #2c2c2c;
         }
+        .sketch-border-sm {
+            border: 2px solid #2c2c2c;
+            border-radius: 255px 10px 240px 15px/15px 240px 10px 255px;
+        }
         .sketch-btn {
             border: 2px solid #2c2c2c;
             border-radius: 255px 25px 225px 25px/25px 225px 25px 255px;
@@ -47,6 +51,16 @@
         .sketch-btn:hover {
             transform: translate(-2px, -2px);
             box-shadow: 4px 4px 0px #2c2c2c;
+        }
+        .polaroid {
+            background: #ffffff;
+            border: 2px solid #2c2c2c;
+            box-shadow: 4px 4px 0px rgba(44,44,44,0.15);
+            transition: transform 0.2s ease;
+        }
+        .polaroid:hover {
+            transform: translateY(-4px) rotate(0deg) !important;
+            box-shadow: 6px 6px 0px #2c2c2c;
         }
         #mood-text {
             transition: opacity 0.15s ease-in-out;
@@ -61,10 +75,10 @@
             TamaHara<span class="text-terracotta">.Co</span>
         </a>
         <nav class="hidden md:flex gap-8 font-medium text-lg">
-            <a href="#about" class="hover:text-terracotta transition-colors">About</a>
-            <a href="#gallery" class="hover:text-terracotta transition-colors">Gallery</a>
-            <a href="#studio" class="hover:text-terracotta transition-colors">Studio Notes</a>
-            <a href="#contact" class="hover:text-terracotta transition-colors">Contact / Etsy</a>
+            <a href="#story" class="hover:text-terracotta transition-colors">My Story</a>
+            <a href="#gallery" class="hover:text-terracotta transition-colors">Gallery Grid</a>
+            <a href="#junk-drawer" class="hover:text-terracotta transition-colors">Junk Drawer</a>
+            <a href="#contact" class="hover:text-terracotta transition-colors">Shop & Contact</a>
         </nav>
         <button id="mobile-menu-btn" class="md:hidden font-handwritten text-2xl px-3 py-1 sketch-btn bg-white">Menu</button>
     </header>
@@ -72,14 +86,14 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="hidden fixed inset-0 bg-oatmeal z-50 p-8 flex flex-col justify-center items-center gap-6 text-2xl font-handwritten">
         <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl">&times;</button>
-        <a href="#about" class="mobile-link hover:text-terracotta">About</a>
-        <a href="#gallery" class="mobile-link hover:text-terracotta">Gallery</a>
-        <a href="#studio" class="mobile-link hover:text-terracotta">Studio Notes</a>
-        <a href="#contact" class="mobile-link hover:text-terracotta">Contact / Etsy</a>
+        <a href="#story" class="mobile-link hover:text-terracotta">My Story</a>
+        <a href="#gallery" class="mobile-link hover:text-terracotta">Gallery Grid</a>
+        <a href="#junk-drawer" class="mobile-link hover:text-terracotta">Junk Drawer</a>
+        <a href="#contact" class="mobile-link hover:text-terracotta">Shop & Contact</a>
     </div>
 
     <!-- Hero Section -->
-    <main class="w-full max-w-5xl mx-auto px-6 my-12 flex-grow">
+    <main class="w-full max-w-5xl mx-auto px-6 my-12 flex-grow space-y-24">
         <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
                 <div class="inline-block bg-mustard/30 px-4 py-1.5 sketch-btn font-handwritten text-xl font-bold text-forest">
@@ -89,22 +103,22 @@
                     Handmade Seed Beads & Fiber Art
                 </h1>
                 <p class="text-lg text-gray-700 leading-relaxed">
-                    Crafting intricate Miyuki bead fringe earrings with the brick stitch technique and needle-felted treasures inspired by nature's quiet details. Based in Ebina, Kanagawa.
+                    Crafting intricate Miyuki bead fringe earrings with brick stitch techniques and needle-felted textile treasures inspired by nature's quiet details. Based in Ebina, Kanagawa.
                 </p>
                 <div class="flex gap-4 pt-4">
                     <a href="#gallery" class="sketch-btn bg-terracotta text-white font-medium px-6 py-3 shadow-sm inline-block">
-                        Explore Works
+                        View Gallery Grid
                     </a>
-                    <a href="#contact" class="sketch-btn bg-white font-medium px-6 py-3 shadow-sm inline-block">
-                        Visit Etsy Shop
+                    <a href="#junk-drawer" class="sketch-btn bg-white font-medium px-6 py-3 shadow-sm inline-block">
+                        Explore Junk Drawer
                     </a>
                 </div>
             </div>
             
-            <!-- Hero Sketch Card / Interactive Widget -->
+            <!-- Hero Interactive Widget -->
             <div class="sketch-border bg-white p-8 relative shadow-lg transform rotate-1">
                 <div class="absolute -top-4 -right-4 bg-mustard text-white font-handwritten px-4 py-1 text-lg rounded-full shadow">
-                    Fresh from Studio! 🌿
+                    Live from Studio 🌿
                 </div>
                 <h3 class="font-handwritten text-3xl font-bold mb-3 text-forest">Today's Studio Mood</h3>
                 <p id="mood-text" class="text-gray-600 italic mb-6">
@@ -116,78 +130,139 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="my-24 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="sketch-border bg-white p-6 space-y-4">
-                <div class="text-3xl">🪡</div>
-                <h3 class="font-handwritten text-3xl font-bold">Miyuki Beadwork</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Specializing in custom hand-beaded fringe earrings using precision Miyuki seed beads and durable thread via the traditional brick stitch method.
+        <!-- My Story Section -->
+        <section id="story" class="sketch-border bg-white p-8 md:p-12 space-y-6">
+            <div class="max-w-2xl">
+                <span class="font-handwritten text-2xl text-terracotta font-bold">Background & Craft</span>
+                <h2 class="font-handwritten text-5xl font-bold mt-1 mb-4">My Story</h2>
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    Hello! I'm a stay-at-home artist and jewelry craftsperson rooted in Ebina, Kanagawa. My creative practice is an exploration of slow, tactile work—transforming tiny glass beads and soft wool into wearable pieces of nature.
                 </p>
-            </div>
-            <div class="sketch-border bg-white p-6 space-y-4">
-                <div class="text-3xl">🌿</div>
-                <h3 class="font-handwritten text-3xl font-bold">Needle Felting</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Bringing nature motifs—from ginkgo leaves and delicate florals to birds—to life on hats, brooches, ties, and clothing items.
-                </p>
-            </div>
-            <div class="sketch-border bg-white p-6 space-y-4">
-                <div class="text-3xl">☕</div>
-                <h3 class="font-handwritten text-3xl font-bold">Slow Living</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Rooted in Kanagawa, finding endless creative spark in morning matcha, coastal walks, and quiet analog craftsmanship.
+                <p class="text-gray-600 leading-relaxed">
+                    Whether I'm constructing custom fringe earrings with precise Miyuki beads using the brick stitch method, or needle-felting ginkgo leaves, botanical patterns, and birds onto hats and brooches, every piece is made with patience, care, and an appreciation for analog craft.
                 </p>
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="my-24">
-            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
-                <h2 class="font-handwritten text-5xl font-bold">Selected Creations</h2>
-                <p class="text-gray-600">A glimpse into current handmade collections and custom orders.</p>
+        <!-- Gallery Grid Section -->
+        <section id="gallery" class="space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="font-handwritten text-2xl text-terracotta font-bold">Portfolio</span>
+                <h2 class="font-handwritten text-5xl font-bold">The Gallery Grid</h2>
+                <p class="text-gray-600">A collection of custom seed beadwork, needle-felting, and textile accessories.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Gallery Item 1 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Grid Item 1 -->
                 <div class="sketch-border bg-white p-4 space-y-3">
-                    <div class="h-48 bg-oatmeal sketch-border flex items-center justify-center font-handwritten text-2xl text-gray-400">
-                        [Beaded Fringe Earrings]
+                    <div class="h-56 bg-oatmeal sketch-border-sm flex items-center justify-center font-handwritten text-xl text-gray-400 text-center p-4">
+                        [Emerald Kingfisher Fringe Earrings]
                     </div>
-                    <h4 class="font-handwritten text-2xl font-bold">Emerald Kingfisher Fringe</h4>
-                    <p class="text-xs text-gray-500">Miyuki seed beads • Brick stitch</p>
+                    <h4 class="font-handwritten text-2xl font-bold">Kingfisher Cascades</h4>
+                    <p class="text-xs text-gray-500">Miyuki seed beads • Brick stitch fringe</p>
                 </div>
-                <!-- Gallery Item 2 -->
+                <!-- Grid Item 2 -->
                 <div class="sketch-border bg-white p-4 space-y-3">
-                    <div class="h-48 bg-oatmeal sketch-border flex items-center justify-center font-handwritten text-2xl text-gray-400">
-                        [Ginkgo Leaf Brooch]
+                    <div class="h-56 bg-oatmeal sketch-border-sm flex items-center justify-center font-handwritten text-xl text-gray-400 text-center p-4">
+                        [Ginkgo Leaf Needle-Felted Hat]
                     </div>
-                    <h4 class="font-handwritten text-2xl font-bold">Ginkgo Autumnal Brooch</h4>
-                    <p class="text-xs text-gray-500">Needle-felted wool • Hand-stitched details</p>
+                    <h4 class="font-handwritten text-2xl font-bold">Autumn Ginkgo Wool Hat</h4>
+                    <p class="text-xs text-gray-500">Needle-felted wool motif on felt</p>
                 </div>
-                <!-- Gallery Item 3 -->
+                <!-- Grid Item 3 -->
                 <div class="sketch-border bg-white p-4 space-y-3">
-                    <div class="h-48 bg-oatmeal sketch-border flex items-center justify-center font-handwritten text-2xl text-gray-400">
-                        [Custom Floral Hat]
+                    <div class="h-56 bg-oatmeal sketch-border-sm flex items-center justify-center font-handwritten text-xl text-gray-400 text-center p-4">
+                        [Botanical Floral Brooch]
                     </div>
-                    <h4 class="font-handwritten text-2xl font-bold">Wildflower Wool Hat</h4>
-                    <p class="text-xs text-gray-500">Needle-felted botanical motif</p>
+                    <h4 class="font-handwritten text-2xl font-bold">Wildflower Garden Brooch</h4>
+                    <p class="text-xs text-gray-500">Needle felting & hand embroidery</p>
+                </div>
+                <!-- Grid Item 4 -->
+                <div class="sketch-border bg-white p-4 space-y-3">
+                    <div class="h-56 bg-oatmeal sketch-border-sm flex items-center justify-center font-handwritten text-xl text-gray-400 text-center p-4">
+                        [Sunset Gradient Beaded Earrings]
+                    </div>
+                    <h4 class="font-handwritten text-2xl font-bold">Tropical Twilight Fringe</h4>
+                    <p class="text-xs text-gray-500">Miyuki beads • Custom colorway</p>
+                </div>
+                <!-- Grid Item 5 -->
+                <div class="sketch-border bg-white p-4 space-y-3">
+                    <div class="h-56 bg-oatmeal sketch-border-sm flex items-center justify-center font-handwritten text-xl text-gray-400 text-center p-4">
+                        [Songbird Necktie Accent]
+                    </div>
+                    <h4 class="font-handwritten text-2xl font-bold">Azure Titmouse Tie Detail</h4>
+                    <p class="text-xs text-gray-500">Needle-felted fiber art on silk</p>
+                </div>
+                <!-- Grid Item 6 -->
+                <div class="sketch-border bg-white p-4 space-y-3">
+                    <div class="h-56 bg-oatmeal sketch-border-sm flex items-center justify-center font-handwritten text-xl text-gray-400 text-center p-4">
+                        [Custom Palette Commission]
+                    </div>
+                    <h4 class="font-handwritten text-2xl font-bold">Custom Beaded Commission</h4>
+                    <p class="text-xs text-gray-500">Personalized color blend</p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact / Etsy Section -->
-        <section id="contact" class="my-24 sketch-border bg-white p-12 text-center max-w-3xl mx-auto space-y-6">
-            <h2 class="font-handwritten text-5xl font-bold">Let's Connect & Shop</h2>
+        <!-- Junk Drawer Area -->
+        <section id="junk-drawer" class="bg-[#f3eee3] sketch-border p-8 md:p-12 space-y-8 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 opacity-10 font-handwritten text-9xl select-none pointer-events-none">
+                JUNK DRAWER
+            </div>
+            
+            <div class="max-w-xl space-y-2 relative z-10">
+                <span class="font-handwritten text-2xl text-terracotta font-bold">Messy Desk & Studio Notes</span>
+                <h2 class="font-handwritten text-5xl font-bold">The Junk Drawer</h2>
+                <p class="text-gray-700">
+                    A peek into the analog clutter: random inspirations, work-in-progress snapshots, color palettes, and daily studio musings.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                <!-- Polaroid Note 1 -->
+                <div class="polaroid p-4 pb-6 transform -rotate-2">
+                    <div class="h-40 bg-oatmeal border border-gray-300 flex items-center justify-center font-handwritten text-gray-400 text-lg mb-3">
+                        [Polaroid: Bead Sorting]
+                    </div>
+                    <p class="font-handwritten text-xl text-center text-gray-800">Miyuki 11/0 matte opaque shades 🎨</p>
+                </div>
+                <!-- Sticky Note Style -->
+                <div class="bg-mustard/20 sketch-border-sm p-6 transform rotate-1 flex flex-col justify-between">
+                    <div>
+                        <span class="font-handwritten text-2xl font-bold block mb-2 text-forest">📌 Studio Scribbles</span>
+                        <p class="text-sm text-gray-700 font-mono leading-relaxed">
+                            - Need to restock Miyuki thread.<br>
+                            - Sketching new ginkgo leaf brooch layouts.<br>
+                            - Morning matcha break at 10:30 AM. Don't skip!
+                        </p>
+                    </div>
+                    <span class="text-xs text-gray-500 mt-4 block italic">Ebina Studio, Kanagawa</span>
+                </div>
+                <!-- Polaroid Note 2 -->
+                <div class="polaroid p-4 pb-6 transform rotate-2">
+                    <div class="h-40 bg-oatmeal border border-gray-300 flex items-center justify-center font-handwritten text-gray-400 text-lg mb-3">
+                        [Polaroid: Felt Wool Test]
+                    </div>
+                    <p class="font-handwritten text-xl text-center text-gray-800">Testing kingfisher blues 🪶</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop & Contact Section -->
+        <section id="contact" class="sketch-border bg-white p-12 text-center max-w-3xl mx-auto space-y-6">
+            <h2 class="font-handwritten text-5xl font-bold">Shop & Connect</h2>
             <p class="text-gray-700 max-w-xl mx-auto">
-                Interested in custom seed bead earrings, needle-felted accessories, or a collaboration? Visit my Etsy shop or reach out directly!
+                Explore available handmade fringe earrings and needle-felted pieces in my online shops, or reach out for custom color requests!
             </p>
             <div class="flex flex-wrap justify-center gap-4 pt-4">
-                <a href="https://etsy.com" target="_blank" class="sketch-btn bg-terracotta text-white font-medium px-8 py-3">
-                    Visit Etsy Store 🛍️
+                <a href="https://etsy.com" target="_blank" class="sketch-btn bg-terracotta text-white font-medium px-6 py-3">
+                    Etsy Shop 🛍️
                 </a>
-                <a href="mailto:contact@tamahara.co" class="sketch-btn bg-oatmeal font-medium px-8 py-3">
-                    Send Email ✉️
+                <a href="https://minne.com" target="_blank" class="sketch-btn bg-oatmeal font-medium px-6 py-3">
+                    Minne (ミンネ) 🌿
+                </a>
+                <a href="mailto:contact@tamahara.co" class="sketch-btn bg-oatmeal font-medium px-6 py-3">
+                    Send Inquiry ✉️
                 </a>
             </div>
         </section>
